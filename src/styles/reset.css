@@ -1,0 +1,166 @@
+/* Custom Reset CSS for Astro + Tailwind v4 */
+
+:root {
+  /* Design tokens that can be referenced in Astro components */
+  --font-family-base: 'Inter', system-ui, sans-serif;
+  --focus-ring-color: #3b82f6;
+  --focus-ring-offset: 3px;
+  --scrollbar-thumb: #cbd5e1;
+  --scrollbar-thumb-hover: #94a3b8;
+  --selection-background: #33ff00;
+  --selection-text: #1e8a39;
+}
+
+/* Text selection styling */
+::selection {
+  background-color: var(--selection-background);
+  color: var(--selection-text);
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background-color: var(--selection-background);
+  color: var(--selection-text);
+  text-shadow: none;
+}
+
+/* Ensure Astro components work well with Tailwind */
+astro-island,
+astro-slot {
+  display: contents;
+}
+
+/* Base elements */
+html {
+  scroll-behavior: smooth;
+  text-size-adjust: 100%;
+}
+
+/* Improve default rendering in modern browsers */
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  /* Dynamic viewport height for mobile browsers */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeSpeed;
+}
+
+/* Better media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Improved form element defaults */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Modern text wrapping algorithms for better typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* Better focus states */
+:focus-visible {
+  outline: 2px solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+
+/* Target element scrolling adjustment for better UX with fixed headers */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+/* Custom scrollbar that's subtle and consistent */
+@media (min-width: 640px) {
+  ::-webkit-scrollbar {
+    width: 14px;
+    height: 14px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb);
+    border-radius: 10px;
+    border: 4px solid transparent;
+    background-clip: content-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scrollbar-thumb-hover);
+  }
+}
+
+/* Reset list styling */
+.reset-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/* Skip navigation for keyboard users */
+.skip-link {
+  position: absolute;
+  left: 0;
+  padding: 8px;
+  z-index: 50;
+  background: white;
+  color: black;
+  top: -40px;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Fix for iOS Safari overflow issues */
+.lock-scroll {
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Page transitions */
+.page-transition-enter {
+  opacity: 0;
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transition: opacity 200ms ease-out;
+}
+
+.page-transition-exit {
+  opacity: 1;
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transition: opacity 150ms ease-in;
+}
